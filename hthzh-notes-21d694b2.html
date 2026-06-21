@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>华体会 · 稳定入口与页面说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f4f9fc;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1e2b36;
+            line-height: 1.6;
+            padding: 0 1.25rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 2.5rem 0 3.5rem;
+        }
+
+        /* 主视觉 / hero 区域 ———— 网格卡片式头 */
+        .hero-card {
+            background: linear-gradient(145deg, #e3f0f5 0%, #cde7ef 100%);
+            border-radius: 2.25rem;
+            padding: 2.8rem 2rem;
+            margin-bottom: 2.8rem;
+            box-shadow: 0 12px 28px rgba(0, 70, 80, 0.08);
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            border: 1px solid rgba(80, 160, 165, 0.2);
+            position: relative;
+        }
+
+        .hero-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 2.25rem;
+            background: repeating-linear-gradient(45deg, transparent, transparent 24px, rgba(60, 150, 155, 0.03) 24px, rgba(60, 150, 155, 0.03) 48px);
+            pointer-events: none;
+        }
+
+        .hero-title {
+            font-size: 2.6rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            color: #0b3a40;
+            line-height: 1.15;
+            max-width: 720px;
+        }
+
+        .hero-sub {
+            font-size: 1.1rem;
+            color: #2b5a62;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(2px);
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            display: inline-block;
+            width: fit-content;
+            border: 1px solid rgba(70, 145, 150, 0.25);
+            margin-top: 0.3rem;
+        }
+
+        .hero-desc {
+            font-size: 1.05rem;
+            color: #1f464e;
+            max-width: 580px;
+            margin-top: 0.2rem;
+        }
+
+        /* 网格卡片系统 ———— 蓝绿点缀 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin: 2.8rem 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.8rem 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 55, 65, 0.05), 0 1px 3px rgba(0, 30, 40, 0.04);
+            border: 1px solid #e3f0f2;
+            transition: all 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(30, 100, 110, 0.10);
+            border-color: #7fc1c7;
+        }
+
+        .card-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 46px;
+            height: 46px;
+            background: #d4eef2;
+            border-radius: 1rem;
+            margin-bottom: 1.1rem;
+            color: #126a74;
+            font-size: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 550;
+            color: #0b454d;
+            margin-bottom: 0.6rem;
+            letter-spacing: -0.01em;
+        }
+
+        .card p {
+            color: #334f58;
+            font-size: 0.98rem;
+        }
+
+        .card .tag {
+            display: inline-block;
+            background: #ddf0f3;
+            color: #105c66;
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            margin-top: 0.8rem;
+            border: 1px solid #b0d5db;
+        }
+
+        /* 适合人群 ———— 卡片变体 */
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.3rem;
+            margin: 2.2rem 0 2.8rem;
+        }
+
+        .audience-card {
+            background: #f2fafc;
+            border-radius: 1.2rem;
+            padding: 1.3rem 1.2rem;
+            border-left: 5px solid #4fa8b0;
+            box-shadow: 0 2px 6px rgba(40, 100, 110, 0.04);
+        }
+
+        .audience-card h4 {
+            font-weight: 550;
+            color: #115c66;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .audience-card p {
+            font-size: 0.92rem;
+            color: #2f5660;
+        }
+
+        /* 自然链接段落 */
+        .link-section {
+            background: #ffffffdc;
+            backdrop-filter: blur(4px);
+            border-radius: 2rem;
+            padding: 2rem 2.2rem;
+            margin: 2.8rem 0 2.2rem;
+            border: 1px solid #bbe1e6;
+            box-shadow: 0 6px 16px rgba(30, 90, 100, 0.04);
+        }
+
+        .link-section p {
+            font-size: 1.04rem;
+            color: #1f424b;
+            margin-bottom: 1rem;
+        }
+
+        .link-section a {
+            color: #117a86;
+            font-weight: 550;
+            text-decoration: none;
+            border-bottom: 2px solid #8ecbd2;
+            transition: 0.15s;
+        }
+
+        .link-section a:hover {
+            border-bottom-color: #1b8a96;
+            color: #07545e;
+        }
+
+        /* FAQ 摘要 —— 极简卡片 */
+        .faq-mini {
+            background: #eef7f9;
+            border-radius: 1.5rem;
+            padding: 1.8rem 2rem;
+            margin: 2rem 0 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            border: 1px solid #c6e2e7;
+        }
+
+        .faq-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .faq-q {
+            font-weight: 550;
+            color: #145c66;
+        }
+
+        .faq-a {
+            color: #2b5761;
+            font-size: 0.95rem;
+        }
+
+        .faq-a a {
+            color: #117a86;
+            border-bottom: 1px dotted #6bb7c0;
+            text-decoration: none;
+        }
+
+        .faq-a a:hover {
+            border-bottom-style: solid;
+        }
+
+        /* 页脚 */
+        .footer-note {
+            margin-top: 3rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid #d0e5e9;
+            font-size: 0.9rem;
+            color: #496e76;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+        }
+
+        .footer-note span {
+            background: #d8edf1;
+            padding: 0.15rem 0.8rem;
+            border-radius: 40px;
+        }
+
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-card {
+                padding: 2rem 1.3rem;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .audience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .link-section {
+                padding: 1.5rem 1.2rem;
+            }
+
+            .faq-mini {
+                padding: 1.4rem 1.2rem;
+            }
+
+            .page {
+                padding: 1.8rem 0 2.5rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero-title {
+                font-size: 1.6rem;
+            }
+
+            .hero-sub {
+                font-size: 0.95rem;
+                padding: 0.4rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- 主视觉：网格卡片式 Hero -->
+        <div class="hero-card">
+            <div class="hero-title">华体会 · 稳定入口</div>
+            <div class="hero-sub">页面说明 · 信息卡片</div>
+            <p class="hero-desc">
+                从日常使用的角度，理解一个服务的入口是否直接、稳定，往往比功能列表更重要。
+                这里以 <strong>华体会</strong> 为例，展示一种基于卡片的信息组织方式，方便快速了解它的用途与适用场景。
+            </p>
+        </div>
+
+        <!-- 用途卡片 -->
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-icon">📋</div>
+                <h3>快速索引</h3>
+                <p>把零散的功能点、常见问题归纳成独立卡片，不用反复翻找，看一眼就知道哪个板块对应什么事。</p>
+                <span class="tag">信息结构</span>
+            </div>
+            <div class="card">
+                <div class="card-icon">🔗</div>
+                <h3>自然跳转</h3>
+                <p>页面中的链接以句子方式融入，比如在介绍服务时提到 <a href="https://hthzh.com.cn" style="color:#117a86; text-decoration:underline; text-underline-offset:3px; font-weight:500;">华体会</a> 作为参考，不破坏阅读节奏。</p>
+                <span class="tag">交互方式</span>
+            </div>
+            <div class="card">
+                <div class="card-icon">🧩</div>
+                <h3>场景适配</h3>
+                <p>无论用在个人备忘、团队分享还是产品说明，卡片式结构都能保持页面整洁，尤其适合移动端的滑动浏览。</p>
+                <span class="tag">响应式</span>
+            </div>
+            <div class="card">
+                <div class="card-icon">⚖️</div>
+                <h3>克制备注</h3>
+                <p>这里不夸大任何效果，只是把页面当作一个实在的说明载体，让阅读的人自己判断信息的价值。</p>
+                <span class="tag">风格</span>
+            </div>
+        </div>
+
+        <!-- 适合人群 -->
+        <h2 style="font-weight:480; color:#0b454d; margin: 1.8rem 0 0.6rem; font-size:1.4rem; letter-spacing:-0.02em;">适合这样的人群</h2>
+        <div class="audience-grid">
+            <div class="audience-card">
+                <h4>日常浏览者</h4>
+                <p>习惯通过简单直接的页面了解服务，不喜欢复杂导航或弹窗干扰。</p>
+            </div>
+            <div class="audience-card">
+                <h4>产品说明撰写者</h4>
+                <p>参考这种卡片式段落结构来组织功能介绍、FAQ 摘要或引导页内容。</p>
+            </div>
+            <div class="audience-card">
+                <h4>移动优先用户</h4>
+                <p>经常用手机查看页面，希望信息块清晰、按钮和链接轻松点按。</p>
+            </div>
+            <div class="audience-card">
+                <h4>信息整理控</h4>
+                <p>喜欢把零散要点归纳成独立卡片，一眼看到核心，不用读大段文字。</p>
+            </div>
+        </div>
+
+        <!-- 自然链接段落 + 页面说明 -->
+        <div class="link-section">
+            <p>
+                很多人第一次接触 <a href="https://hthzh.com.cn">华体会</a> 时，会先留意它的入口稳定性和页面整体说明是否清晰。
+                这个介绍页并不堆砌功能列表，而是把用途、适合场景和常见疑问分别放进网格卡片里，让每个部分都自包含。
+                比如上面的用途卡片，从快速索引到自然跳转，都围绕「入口简明」和「信息实在」两个思路展开。
+            </p>
+            <p>
+                如果你正在找一个可以直接理解、没有多余修饰的页面示例，可以看看 <a href="https://hthzh.com.cn">华体会</a> 的结构逻辑。
+                它不依靠大图轮播或夸张文案，而是靠卡片分区和克制的蓝绿点缀来传递内容。
+                这种风格适合团队内部文档、个人导航页或轻量级产品介绍。
+            </p>
+        </div>
+
+        <!-- FAQ 摘要（卡片式） -->
+        <div class="faq-mini">
+            <div class="faq-item">
+                <span class="faq-q">▪ 这个页面主要展示什么？</span>
+                <span class="faq-a">它是一张信息卡片式的介绍页，以 <a href="https://hthzh.com.cn">华体会</a> 为例，说明如何用网格卡片组织用途、人群和常见问题，同时保持入口清晰。</span>
+            </div>
+            <div class="faq-item">
+                <span class="faq-q">▪ 为什么强调“稳定入口”？</span>
+                <span class="faq-a">稳定入口意味着链接可以长期使用、不被随意修改或失效，对于经常要参考或分享的页面来说，这比花哨的交互更重要。</span>
+            </div>
+            <div class="faq-item">
+                <span class="faq-q">▪ 我可以直接复用这个页面的结构吗？</span>
+                <span class="faq-a">完全没问题，所有样式和内容思路都是开源的，只需替换为你自己的内容即可。保留署名或链接不是强制的，但欢迎提及来源。</span>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <div class="footer-note">
+            <span>信息卡片 · 蓝绿点缀</span>
+            <span>华体会 · 页面说明</span>
+            <span>移动端友好</span>
+        </div>
+    </div>
+</body>
+</html>
